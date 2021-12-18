@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chat App</title>
+  <!-- <style>
+
+    body {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    #message-container {
+      width: 80%;
+      max-width: 1200px;
+    }
+
+    #message-container div {
+      background-color: #CCC;
+      padding: 5px;
+    }
+
+    #message-container div:nth-child(2n) {
+      background-color: #FFF;
+    }
+
+    #send-container {
+      position: fixed;
+      padding-bottom: 30px;
+      bottom: 0;
+      background-color: white;
+      max-width: 1200px;
+      width: 80%;
+      display: flex;
+    }
+
+    #message-input {
+      flex-grow: 1;
+    }
+  </style> -->
+  <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+
+
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Chat</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <!-- <a class="nav-link" href="#">Home</a> -->
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="customRadioInline1" value="sha" name="customRadioInline" class="custom-control-input" checked>
+            <label class="custom-control-label" for="customRadioInline1">SHA-256</label>
+          </div>
+        </li>
+        <li class="nav-item active">
+          <!-- <a class="nav-link" href="#">Features</a> -->
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="customRadioInline2" value="spn" name="customRadioInline" class="custom-control-input">
+            <label class="custom-control-label" for="customRadioInline2">SPN</label>
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+  </nav>
+  <div class="container">
+    <div id="message-container" class="bg-light d-flex flex-column" style="height: 90vh;overflow-y: auto;"></div>
+  <form id="send-container">
+    <input type="text" id="message-input">
+    <button type="submit" id="send-button">Send</button>
+  </form>
+  </div>
+
+
+  <script src="dist/js/jquery.js"></script>
+  <script src="dist/js/bootstrap.min.js"></script>
+  <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+  <script defer src="script.js"></script>
+
+</body>
+</html> 
