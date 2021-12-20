@@ -73,7 +73,6 @@ const encrypt = function(text){
 
 const decrypt = function(text){
     let cipher_Text = text;
-    console.log({type: typeof text,c: text});
     let plain_Text = "";
     let xor_text = "";
     let data = "";
@@ -111,5 +110,10 @@ const decrypt = function(text){
 
 export default {
     decrypt,
-    encrypt
+    encrypt,
+    string2Binary,
+    binary2String,
+    substitution,
+    r_Substitution,
+    xor
 }
