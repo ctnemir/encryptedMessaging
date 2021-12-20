@@ -14,7 +14,7 @@ function binary2String(str) {
         newBin.push(str.substring(i,i+8))
     }
     var binCode = [];
-    for (i = 0; i < newBin.length; i++) {
+    for (let i = 0; i < newBin.length; i++) {
         binCode.push(String.fromCharCode(parseInt(newBin[i], 2)));
       }
     return binCode.join("");
@@ -73,8 +73,10 @@ const encrypt = function(text){
 
 const decrypt = function(text){
     let cipher_Text = text;
+    console.log({type: typeof text,c: text});
     let plain_Text = "";
     let xor_text = "";
+    let data = "";
 
     for( let i = 0; i<cipher_Text.length; i+=16){
         data = cipher_Text.substring(i,i+16)

@@ -1,21 +1,20 @@
+// import axios from 'axios';
 const socket = io('http://localhost:3000')
 const messageContainer = document.getElementById('message-container')
 const messageForm = document.getElementById('send-container')
 const messageInput = document.getElementById('message-input')
 
 import spn from "./spn.js";
-import sha256 from 'crypto-js/sha256';
-
-
+// console.log(sha256("recep"));
 const name = prompt("What's your name?")
 const encryptType = document.querySelector('input[name="customRadioInline"]:checked').value
 
 appendMessage('You Joined.',2)
-console.log(encryptType)
+// console.log(encryptType)
 socket.emit('new-user', name)
 
 function hash(string,type) {
-    console.log(string);
+    // console.log(string);
     if(type == "sha")
     return sha256(string)
     else if(type == "spn")
@@ -24,11 +23,13 @@ function hash(string,type) {
 
 
 socket.on('chat-message', data=> {
-    console.log(data);
-    // if (document.querySelector('input[name="customRadioInline"]:checked').value == "spn") {
-    //     data.message = decrypt(data.message)
-    // }
-    // appendMessage(data.name +": "+ data.message , 1)
+    let datas = JSON.parse(data.data)
+    console.log("data");
+    console.log(datas);
+    if (document.querySelector('input[name="customRadioInline"]:checked').value == "spn" && datas.encrypt == "spn") {
+        datas.content = spn.decrypt(datas.content)
+    }
+    appendMessage(data.name +": "+ datas.content , 1)
 })
 
 socket.on('user-connected', name=> {
@@ -44,7 +45,7 @@ messageForm.addEventListener('submit', e=>{
     const message = messageInput.value
     appendMessage('You: '+ message,3)
     let enType = document.querySelector('input[name="customRadioInline"]:checked').value
-    data = {
+    let data = {
         content: hash(message,enType),
         encrypt: enType
     }

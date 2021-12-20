@@ -10,9 +10,10 @@ const server = createServer(app);
 const io = new Server(server);
 server.listen(3000);
 
+
 // const { createHash } = require('crypto');
 function hash(string,type) {
-    console.log(string);
+    // console.log(string);
     if(type == "sha")
     return sha256(string)
     // return createHash('sha256').update(string).digest('hex');
@@ -21,7 +22,7 @@ function hash(string,type) {
   }
 
 //   console.log(hash("alo","sha"))
-
+//   console.log(spn.encrypt("emir"));
 //   console.log(spn.decrypt("00101110011011111110111001010001"))
   
   
