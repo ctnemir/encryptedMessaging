@@ -73,10 +73,17 @@
     
   </nav>
   <div class="container">
-    <div id="message-container" class="bg-light d-flex flex-column" style="height: 90vh;overflow-y: auto;"></div>
+    <div id="message-container" class="bg-light d-flex flex-column" style="height: 85vh;overflow-y: auto;"></div>
   <form id="send-container">
-    <input type="text" id="message-input">
-    <button type="submit" id="send-button">Send</button>
+    <!-- <input type="text" id="message-input">
+    <button type="submit" id="send-button">Send</button> -->
+
+    <div class="input-group mb-3">
+      <input id="message-input" type="text" class="form-control" placeholder="Message..." aria-label="Message..." aria-describedby="send-button">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="send-button">Send</button>
+      </div>
+    </div>
   </form>
   </div>
 
@@ -84,7 +91,7 @@
   <script src="dist/js/jquery.js"></script>
   <script src="dist/js/bootstrap.min.js"></script>
   <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
-  <script defer src="script.js"></script>
+  <script defer src="script.js" type="module"></script>
 
 </body>
 </html> 

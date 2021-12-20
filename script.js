@@ -3,6 +3,10 @@ const messageContainer = document.getElementById('message-container')
 const messageForm = document.getElementById('send-container')
 const messageInput = document.getElementById('message-input')
 
+import spn from "./spn.js";
+import sha256 from 'crypto-js/sha256';
+
+
 const name = prompt("What's your name?")
 const encryptType = document.querySelector('input[name="customRadioInline"]:checked').value
 
@@ -10,8 +14,21 @@ appendMessage('You Joined.',2)
 console.log(encryptType)
 socket.emit('new-user', name)
 
+function hash(string,type) {
+    console.log(string);
+    if(type == "sha")
+    return sha256(string)
+    else if(type == "spn")
+    return spn.encrypt(string)
+  }
+
+
 socket.on('chat-message', data=> {
-    appendMessage(data.name +": "+ data.message , 1)
+    console.log(data);
+    // if (document.querySelector('input[name="customRadioInline"]:checked').value == "spn") {
+    //     data.message = decrypt(data.message)
+    // }
+    // appendMessage(data.name +": "+ data.message , 1)
 })
 
 socket.on('user-connected', name=> {
@@ -26,9 +43,10 @@ messageForm.addEventListener('submit', e=>{
     e.preventDefault()
     const message = messageInput.value
     appendMessage('You: '+ message,3)
+    let enType = document.querySelector('input[name="customRadioInline"]:checked').value
     data = {
-        content: message,
-        encrypt: document.querySelector('input[name="customRadioInline"]:checked').value
+        content: hash(message,enType),
+        encrypt: enType
     }
     socket.emit('send-chat-message', JSON.stringify(data))
     messageInput.value = ''

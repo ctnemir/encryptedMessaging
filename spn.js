@@ -48,7 +48,7 @@ function xor(string,subKey){
     return bin_xor;
 }
 
-exports.encrypt = function(text){
+const encrypt = function(text){
     let bin_plainText = string2Binary(text)
     let data = bin_plainText
     let xor_text = "";
@@ -71,7 +71,7 @@ exports.encrypt = function(text){
     return cipherText
 }
 
-exports.decrypt = function(text){
+const decrypt = function(text){
     let cipher_Text = text;
     let plain_Text = "";
     let xor_text = "";
@@ -97,10 +97,17 @@ exports.decrypt = function(text){
 
 
 
-exports.spn = function(string){
-    // return binary2String("0110110101100101")
-    // return substitution("0123456789abcdef")
-    // return decrypt(encrypt("me"))
-    // return xor("0110","0011")
-    // return string2Binary("omer").substring(16,24)
+// export  const spn = function(string){
+//     // return binary2String("0110110101100101")
+//     // return substitution("0123456789abcdef")
+//     // return decrypt(encrypt("me"))
+//     // return xor("0110","0011")
+//     // return string2Binary("omer").substring(16,24)
+// }
+
+// module.exports = { decrypt }
+
+export default {
+    decrypt,
+    encrypt
 }

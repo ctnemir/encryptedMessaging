@@ -1,7 +1,16 @@
-const io = require('socket.io')(3000)
-const spn = require("./spn")
+
+import spn from "./spn.js";
+import sha256 from "js-sha256";
+import { Server } from 'socket.io';
+import express from 'express';
+import { createServer } from 'http';
+
+const app = express(); 
+const server = createServer(app); 
+const io = new Server(server);
+server.listen(3000);
+
 // const { createHash } = require('crypto');
-var sha256 = require('js-sha256');
 function hash(string,type) {
     console.log(string);
     if(type == "sha")
@@ -13,7 +22,7 @@ function hash(string,type) {
 
 //   console.log(hash("alo","sha"))
 
-  console.log(spn.decrypt("00101110011011111110111001010001"))
+//   console.log(spn.decrypt("00101110011011111110111001010001"))
   
   
 const users = {}
@@ -27,8 +36,9 @@ io.on('connection', socket=> {
         socket.broadcast.emit('user-connected', name)
     })
     socket.on('send-chat-message', data =>{
-        data=JSON.parse(data);
-        socket.broadcast.emit('chat-message',{message: hash(data.content,data.encrypt), name: users[socket.id]})
+        // data=JSON.parse(data);
+        // socket.broadcast.emit('chat-message',{message: hash(data.content,data.encrypt), name: users[socket.id]})
+        socket.broadcast.emit('chat-message',{data :data, name: users[socket.id]})
     })
     socket.on('disconnect-user', () => {
         socket.broadcast.emit('user-disconnected', users[socket.id])
