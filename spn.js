@@ -49,6 +49,8 @@ function xor(string,subKey){
 }
 
 const encrypt = function(text){
+    cipherText = "";
+    text = text%2 == 1 ? text+" " : text; 
     let bin_plainText = string2Binary(text)
     let data = bin_plainText
     let xor_text = "";
