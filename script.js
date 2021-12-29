@@ -1,5 +1,6 @@
-// import axios from 'axios';
-const socket = io('http://localhost:3000')
+const targetIp = prompt("Source IP")
+console.log(typeof targetIp)
+const socket = io('http://'+ targetIp==""?"localhost":targetIp  +':3000')
 const messageContainer = document.getElementById('message-container')
 const messageForm = document.getElementById('send-container')
 const messageInput = document.getElementById('message-input')
@@ -91,3 +92,6 @@ function appendMessage(message,align){
     messageContainer.append(cardContainer)
     messageContainer.scrollTop = messageContainer.scrollHeight
 }
+
+var uploader = new SocketIOFileUpload(socket);
+uploader.listenOnInput(document.getElementById("siofu_input"));
