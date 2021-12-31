@@ -26,4 +26,4 @@ You can access in index.html by your browser.
 
 <img src="img/kiviat.jpeg" >
 <img src="img/blockHistogram.jpeg">
-<img src="img/unitTest.png">
+<img src="img/unitTestResult.png">
