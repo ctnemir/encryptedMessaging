@@ -24,4 +24,4 @@ You can access in index.html by your browser.
 
 ## Reports
 
-<img src="img/kiviat.jpg" >
+<img src="img/kiviat.jpeg" >
