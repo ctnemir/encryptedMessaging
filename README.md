@@ -25,3 +25,5 @@ You can access in index.html by your browser.
 ## Reports
 
 <img src="img/kiviat.jpeg" >
+<img src="img/blockHistogram.jpeg">
+<img src="img/unitTest.png">
