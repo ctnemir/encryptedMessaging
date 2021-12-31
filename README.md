@@ -1,4 +1,6 @@
-# Encrypted Chat
+# [Encrypted Chat](https://youtu.be/HxTxz5ajbfY)
+
+Youtube Video Link: https://youtu.be/HxTxz5ajbfY
 
 It is a socket programming based crypto live messaging application.
 ## Installation
